@@ -1,0 +1,120 @@
+{
+  "name": "PressRelease",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string",
+      "description": "HTML content"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "announcement",
+        "event",
+        "crisis",
+        "product",
+        "partnership",
+        "achievement",
+        "statement",
+        "other"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "pending_review",
+        "approved",
+        "published",
+        "archived"
+      ],
+      "default": "draft"
+    },
+    "author": {
+      "type": "string"
+    },
+    "reviewer": {
+      "type": "string"
+    },
+    "approved_by": {
+      "type": "string"
+    },
+    "publish_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "embargo_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "attachments": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "media_kit_url": {
+      "type": "string"
+    },
+    "contact_name": {
+      "type": "string"
+    },
+    "contact_email": {
+      "type": "string"
+    },
+    "contact_phone": {
+      "type": "string"
+    },
+    "distribution_list": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Email journalist/media yang akan dikirim"
+    },
+    "distribution_status": {
+      "type": "string",
+      "enum": [
+        "not_sent",
+        "sending",
+        "sent",
+        "failed"
+      ],
+      "default": "not_sent"
+    },
+    "sent_count": {
+      "type": "number",
+      "default": 0
+    },
+    "open_count": {
+      "type": "number",
+      "default": 0
+    },
+    "coverage_count": {
+      "type": "number",
+      "default": 0
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "campaign_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "content"
+  ]
+}
