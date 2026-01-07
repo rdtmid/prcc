@@ -1,0 +1,78 @@
+{
+  "name": "Outreach",
+  "type": "object",
+  "properties": {
+    "journalist_id": {
+      "type": "string"
+    },
+    "journalist_name": {
+      "type": "string"
+    },
+    "journalist_email": {
+      "type": "string"
+    },
+    "press_release_id": {
+      "type": "string"
+    },
+    "press_release_title": {
+      "type": "string"
+    },
+    "subject": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "pitch_angle": {
+      "type": "string",
+      "description": "Personalized pitch angle used"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "sent",
+        "opened",
+        "responded",
+        "declined",
+        "published"
+      ],
+      "default": "draft"
+    },
+    "sent_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "opened_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "response_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "response_text": {
+      "type": "string"
+    },
+    "ai_match_score": {
+      "type": "number",
+      "description": "AI relevance score 0-100"
+    },
+    "ai_generated": {
+      "type": "boolean",
+      "default": false
+    },
+    "follow_up_count": {
+      "type": "number",
+      "default": 0
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "journalist_email",
+    "press_release_id",
+    "subject"
+  ]
+}
