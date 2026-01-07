@@ -1,0 +1,106 @@
+{
+  "name": "Report",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "daily",
+        "weekly",
+        "monthly",
+        "campaign",
+        "crisis",
+        "custom"
+      ],
+      "default": "weekly"
+    },
+    "period_start": {
+      "type": "string",
+      "format": "date"
+    },
+    "period_end": {
+      "type": "string",
+      "format": "date"
+    },
+    "campaign_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "generating",
+        "ready",
+        "sent",
+        "error"
+      ],
+      "default": "generating"
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "total_mentions": {
+          "type": "number"
+        },
+        "total_reach": {
+          "type": "number"
+        },
+        "total_engagement": {
+          "type": "number"
+        },
+        "sentiment_positive": {
+          "type": "number"
+        },
+        "sentiment_negative": {
+          "type": "number"
+        },
+        "sentiment_neutral": {
+          "type": "number"
+        },
+        "share_of_voice": {
+          "type": "number"
+        },
+        "emv": {
+          "type": "number"
+        },
+        "top_sources": {
+          "type": "array"
+        },
+        "top_keywords": {
+          "type": "array"
+        },
+        "top_influencers": {
+          "type": "array"
+        }
+      }
+    },
+    "insights": {
+      "type": "string",
+      "description": "AI-generated insights"
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "file_url": {
+      "type": "string"
+    },
+    "sent_to": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "generated_by": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "type"
+  ]
+}
