@@ -1,0 +1,74 @@
+import { createClientFromRequest } from 'npm:@base44/sdk@0.8.6';
+
+Deno.serve(async (req) => {
+  try {
+    const base44 = createClientFromRequest(req);
+    
+    // Verify admin access
+    const user = await base44.auth.me();
+    if (user?.role !== 'admin') {
+      return Response.json({ error: 'Forbidden: Admin access required' }, { status: 403 });
+    }
+
+    // Get all mentions
+    const mentions = await base44.asServiceRole.entities.Mention.list('-created_date', 1000);
+    
+    let updated = 0;
+    let skipped = 0;
+    let errors = 0;
+
+    console.log(`Starting migration for ${mentions.length} mentions...`);
+
+    for (const mention of mentions) {
+      try {
+        // Skip if already has source_url
+        if (mention.source_url) {
+          skipped++;
+          continue;
+        }
+
+        // Extract URLs from content using regex
+        const urlRegex = /(https?:\/\/[^\s]+)/g;
+        const urls = mention.content.match(urlRegex);
+        
+        if (urls && urls.length > 0) {
+          // Take the first URL found
+          const extractedUrl = urls[0];
+          
+          // Remove URLs from content
+          const cleanContent = mention.content.replace(urlRegex, '').trim();
+          
+          // Update mention
+          await base44.asServiceRole.entities.Mention.update(mention.id, {
+            source_url: extractedUrl,
+            content: cleanContent || mention.content // Keep original if cleaning resulted in empty
+          });
+          
+          updated++;
+          console.log(`Updated mention ${mention.id}: ${extractedUrl}`);
+        } else {
+          // No URL found, skip
+          skipped++;
+        }
+      } catch (error) {
+        console.error(`Error updating mention ${mention.id}:`, error);
+        errors++;
+      }
+    }
+
+    const result = {
+      total: mentions.length,
+      updated,
+      skipped,
+      errors,
+      message: `Migration complete: ${updated} updated, ${skipped} skipped, ${errors} errors`
+    };
+
+    console.log('Migration result:', result);
+
+    return Response.json(result);
+  } catch (error) {
+    console.error('Migration failed:', error);
+    return Response.json({ error: error.message }, { status: 500 });
+  }
+});
