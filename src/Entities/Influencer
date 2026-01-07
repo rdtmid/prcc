@@ -1,0 +1,117 @@
+{
+  "name": "Influencer",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "username": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "photo_url": {
+      "type": "string"
+    },
+    "platform": {
+      "type": "string",
+      "enum": [
+        "instagram",
+        "tiktok",
+        "youtube",
+        "twitter",
+        "multi-platform"
+      ]
+    },
+    "category": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Kategori konten (lifestyle, politik, tech, dll)"
+    },
+    "followers": {
+      "type": "number"
+    },
+    "engagement_rate": {
+      "type": "number"
+    },
+    "avg_views": {
+      "type": "number"
+    },
+    "location": {
+      "type": "string"
+    },
+    "tier": {
+      "type": "string",
+      "enum": [
+        "nano",
+        "micro",
+        "macro",
+        "mega",
+        "celebrity"
+      ],
+      "description": "Tier berdasarkan followers"
+    },
+    "estimated_cost": {
+      "type": "number",
+      "description": "Estimasi biaya per post"
+    },
+    "collaboration_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "campaign": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "deliverables": {
+            "type": "string"
+          },
+          "performance": {
+            "type": "string"
+          },
+          "cost": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "potential",
+        "contacted",
+        "negotiating",
+        "active",
+        "completed",
+        "blacklisted"
+      ],
+      "default": "potential"
+    },
+    "rating": {
+      "type": "number",
+      "description": "Rating 1-5"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "name",
+    "platform"
+  ]
+}
