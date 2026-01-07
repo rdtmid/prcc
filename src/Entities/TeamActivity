@@ -1,0 +1,51 @@
+{
+  "name": "TeamActivity",
+  "type": "object",
+  "properties": {
+    "activity_type": {
+      "type": "string",
+      "enum": [
+        "comment",
+        "mention",
+        "update",
+        "approval",
+        "assignment",
+        "completion",
+        "crisis"
+      ],
+      "description": "Type of activity"
+    },
+    "user_email": {
+      "type": "string"
+    },
+    "user_name": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string",
+      "description": "Activity message or comment"
+    },
+    "related_entity": {
+      "type": "string",
+      "description": "Entity type"
+    },
+    "related_id": {
+      "type": "string"
+    },
+    "related_title": {
+      "type": "string"
+    },
+    "mentions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Email addresses mentioned in comment"
+    }
+  },
+  "required": [
+    "activity_type",
+    "user_email",
+    "content"
+  ]
+}
