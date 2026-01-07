@@ -1,0 +1,100 @@
+{
+  "name": "Journalist",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "photo_url": {
+      "type": "string"
+    },
+    "media_outlet": {
+      "type": "string",
+      "description": "Nama media tempat bekerja"
+    },
+    "beat": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Area liputan (politik, ekonomi, dll)"
+    },
+    "location": {
+      "type": "string"
+    },
+    "social_twitter": {
+      "type": "string"
+    },
+    "social_linkedin": {
+      "type": "string"
+    },
+    "social_instagram": {
+      "type": "string"
+    },
+    "relationship_status": {
+      "type": "string",
+      "enum": [
+        "new",
+        "contacted",
+        "warm",
+        "close",
+        "vip"
+      ],
+      "default": "new"
+    },
+    "last_contact_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "pitch_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string"
+          },
+          "subject": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "response": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "coverage_count": {
+      "type": "number",
+      "default": 0
+    },
+    "avg_response_rate": {
+      "type": "number"
+    },
+    "is_favorite": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "name",
+    "media_outlet"
+  ]
+}
