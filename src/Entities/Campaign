@@ -1,0 +1,132 @@
+{
+  "name": "Campaign",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "objective": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "awareness",
+        "reputation",
+        "crisis_management",
+        "product_launch",
+        "event",
+        "ongoing",
+        "other"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "planning",
+        "active",
+        "paused",
+        "completed",
+        "cancelled"
+      ],
+      "default": "planning"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "budget": {
+      "type": "number"
+    },
+    "spent": {
+      "type": "number",
+      "default": 0
+    },
+    "target_audience": {
+      "type": "string"
+    },
+    "key_messages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "keywords_to_track": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "hashtags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "team_members": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "owner": {
+      "type": "string"
+    },
+    "kpis": {
+      "type": "object",
+      "properties": {
+        "target_reach": {
+          "type": "number"
+        },
+        "target_engagement": {
+          "type": "number"
+        },
+        "target_mentions": {
+          "type": "number"
+        },
+        "target_sentiment": {
+          "type": "number"
+        },
+        "target_coverage": {
+          "type": "number"
+        }
+      }
+    },
+    "actual_metrics": {
+      "type": "object",
+      "properties": {
+        "total_reach": {
+          "type": "number"
+        },
+        "total_engagement": {
+          "type": "number"
+        },
+        "total_mentions": {
+          "type": "number"
+        },
+        "avg_sentiment": {
+          "type": "number"
+        },
+        "media_coverage": {
+          "type": "number"
+        },
+        "emv": {
+          "type": "number"
+        }
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}
