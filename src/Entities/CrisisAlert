@@ -1,0 +1,132 @@
+{
+  "name": "CrisisAlert",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ],
+      "default": "medium"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "monitoring",
+        "contained",
+        "resolved"
+      ],
+      "default": "active"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "negative_sentiment_spike",
+        "viral_content",
+        "media_attack",
+        "misinformation",
+        "data_breach",
+        "scandal",
+        "accident",
+        "other"
+      ]
+    },
+    "source_mentions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "IDs of related mentions"
+    },
+    "affected_platforms": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "peak_mentions": {
+      "type": "number"
+    },
+    "current_mentions": {
+      "type": "number"
+    },
+    "sentiment_breakdown": {
+      "type": "object",
+      "properties": {
+        "positive": {
+          "type": "number"
+        },
+        "negative": {
+          "type": "number"
+        },
+        "neutral": {
+          "type": "number"
+        }
+      }
+    },
+    "assigned_team": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "lead_responder": {
+      "type": "string"
+    },
+    "response_plan": {
+      "type": "string"
+    },
+    "official_statement": {
+      "type": "string"
+    },
+    "actions_taken": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          },
+          "by": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "resolution_notes": {
+      "type": "string"
+    },
+    "resolved_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lessons_learned": {
+      "type": "string"
+    },
+    "estimated_impact": {
+      "type": "number",
+      "description": "Estimated reputational impact score"
+    }
+  },
+  "required": [
+    "title",
+    "severity",
+    "type"
+  ]
+}
