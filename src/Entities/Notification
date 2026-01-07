@@ -1,0 +1,69 @@
+{
+  "name": "Notification",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "mention",
+        "crisis",
+        "task",
+        "approval",
+        "comment",
+        "assignment",
+        "system"
+      ],
+      "description": "Type of notification"
+    },
+    "title": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string",
+      "description": "Page or item to navigate to"
+    },
+    "recipient": {
+      "type": "string",
+      "description": "Email of recipient"
+    },
+    "sender": {
+      "type": "string",
+      "description": "Email of sender"
+    },
+    "is_read": {
+      "type": "boolean",
+      "default": false
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "low",
+        "normal",
+        "high",
+        "urgent"
+      ],
+      "default": "normal"
+    },
+    "related_entity": {
+      "type": "string",
+      "description": "Entity name (Mention, CrisisAlert, Task, etc)"
+    },
+    "related_id": {
+      "type": "string",
+      "description": "ID of related entity"
+    },
+    "action_required": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "type",
+    "title",
+    "message",
+    "recipient"
+  ]
+}
