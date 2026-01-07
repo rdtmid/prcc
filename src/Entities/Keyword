@@ -1,0 +1,56 @@
+{
+  "name": "Keyword",
+  "type": "object",
+  "properties": {
+    "keyword": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "brand",
+        "product",
+        "competitor",
+        "topic",
+        "hashtag",
+        "person",
+        "crisis"
+      ],
+      "default": "brand"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "default": "medium"
+    },
+    "alert_on_spike": {
+      "type": "boolean",
+      "default": false
+    },
+    "alert_threshold": {
+      "type": "number",
+      "description": "Percentage increase to trigger alert"
+    },
+    "campaign_id": {
+      "type": "string"
+    },
+    "last_mention_count": {
+      "type": "number"
+    },
+    "total_mentions": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "keyword"
+  ]
+}
