@@ -1,0 +1,139 @@
+{
+  "name": "Mention",
+  "type": "object",
+  "properties": {
+    "source": {
+      "type": "string",
+      "enum": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "tiktok",
+        "youtube",
+        "news",
+        "blog",
+        "forum",
+        "podcast",
+        "other"
+      ],
+      "description": "Platform sumber mention"
+    },
+    "source_url": {
+      "type": "string",
+      "description": "URL asli dari mention"
+    },
+    "author": {
+      "type": "string",
+      "description": "Nama/username penulis"
+    },
+    "author_avatar": {
+      "type": "string",
+      "description": "URL avatar penulis"
+    },
+    "author_followers": {
+      "type": "number",
+      "description": "Jumlah followers penulis"
+    },
+    "content": {
+      "type": "string",
+      "description": "Isi konten mention"
+    },
+    "sentiment": {
+      "type": "string",
+      "enum": [
+        "positive",
+        "negative",
+        "neutral"
+      ],
+      "default": "neutral"
+    },
+    "sentiment_score": {
+      "type": "number",
+      "description": "Score sentiment -1 to 1"
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Keywords yang terdeteksi"
+    },
+    "reach": {
+      "type": "number",
+      "description": "Estimated reach"
+    },
+    "engagement": {
+      "type": "number",
+      "description": "Total engagement (likes, shares, comments)"
+    },
+    "likes": {
+      "type": "number"
+    },
+    "shares": {
+      "type": "number"
+    },
+    "comments": {
+      "type": "number"
+    },
+    "is_crisis": {
+      "type": "boolean",
+      "default": false
+    },
+    "is_flagged": {
+      "type": "boolean",
+      "default": false
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ],
+      "default": "low"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "new",
+        "reviewed",
+        "responded",
+        "archived"
+      ],
+      "default": "new"
+    },
+    "assigned_to": {
+      "type": "string",
+      "description": "Email user yang ditugaskan"
+    },
+    "response_notes": {
+      "type": "string"
+    },
+    "campaign_id": {
+      "type": "string"
+    },
+    "media_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "location": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string",
+      "default": "id"
+    },
+    "mention_date": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "source",
+    "content",
+    "sentiment"
+  ]
+}
